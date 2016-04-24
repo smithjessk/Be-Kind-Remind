@@ -1,2 +1,2 @@
-# Be-Kind-Remind
+# Remind
 Automatically send Twitter messages at scheduled intervals

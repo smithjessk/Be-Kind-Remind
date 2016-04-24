@@ -1,0 +1,12 @@
+{
+  "name": "Remind",
+  "version": "0.0.0",
+  "engine": "node 4.4.1",
+  "description": "Automatically send Twitter messages at scheduled intervals",
+  "main": "remind.js",
+  "repository": "https://github.com/smithjessk/Be-Kind-Remind",
+  "license": "MIT",
+  "dependencies": {
+    "twitter": "^1.2.5"
+  }
+}
