@@ -1,10 +1,12 @@
 if (process.argv.length < 7) {
-    throw new Error("Need at least 5 command line arguments. In order, must be:\n" +
+    throw new Error("Need at least 7 command line arguments. In order, must be:\n" +
                     "consumer_key\n" + 
                     "consumer_secret\n" + 
                     "access_token\n" + 
                     "access_token_secret\n" + 
-                    "target_screen_name\n");
+                    "target_screen_name\n" +
+                    "message_text\n",
+                    "send_frequency_in_ms");
 }
 
 var twitter = require("twitter");
@@ -18,15 +20,17 @@ var client = new twitter({
 
 var params = {
     screen_name: process.argv[6],
-    text: "This is a test"
-}
+    text: process.argv[7]
+};
 
-client.post("direct_messages/new.json", params, handle_result);
+setInterval(function() {
+    client.post("direct_messages/new.json", params, handle_result);
+}, process.argv[8]);
 
 function handle_result(error, data, response) {
     if (error) {
         console.log(error);
     } else {
-        console.log(data);
+        console.log("Sent at " + Date.now());
     }
 }
